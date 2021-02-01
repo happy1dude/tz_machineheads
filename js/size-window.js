@@ -6,13 +6,15 @@ const imgHeaderPhoto = document.getElementById("header-photo-img");
 const menuBtn = document.querySelector('.menu-icon');
 const sidebar = document.querySelector('.sidebar');
 
+// Вешаем событие на кнопку меню по клику
 menuBtn.onclick = () => {
     sidebar.classList.toggle('sidebar__show')
 }
 
+// Получаем размер экрана
 let width = window.innerWidth;
 
-
+// Функция отвечает за добавление точки в пунктах при размере экрана меньше 1600рх, и если больше размер, то вернёт к исходному состоянию
 let sectionStepsLg = () => {
     if (width < 1600) {
         numbPoint.innerHTML = `
@@ -71,6 +73,7 @@ let sectionStepsLg = () => {
     }
 }
 
+// Замена картинки в header'e при изменении экрана
 let headerImg = () => {
     if (width < 1190) {
         imgHeaderPhoto.src = 'img/content-img-header2.png'
@@ -81,6 +84,7 @@ let headerImg = () => {
     
 }
 
+// Стили списка при размере экрана меньше 1022
 let newUl = () => {
     if (width < 1022) {
         infoArrow.classList.remove('section-header-wrapper__content__more-info');
@@ -112,9 +116,9 @@ let newUl = () => {
     
 }
 
+// callback-функции
 function loop() {
     sectionStepsLg();
-    
     requestAnimationFrame(loop); 
 }
 
